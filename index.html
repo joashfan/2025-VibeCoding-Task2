@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="前端工程師的個人網站，展示專業技能、作品集與聯絡方式，專注於現代化網頁開發與使用者體驗設計。">
-    <title>Dev Name · Frontend Dev | Cyberpunk Portfolio</title>
+    <meta name="description" content="這是一個前端工程師的個人網站，內容包含專業技能展示、精選專案作品集與聯絡資訊，專注於現代化 RWD 網頁開發與優質的使用者體驗設計。">
+    <title>Dev Name · Frontend Dev | 個人品牌網站</title>
 
     <style>
         /* ================================================================
@@ -15,29 +15,14 @@
 
         /* CSS:BASE-START */
         :root {
-            /* 賽博龐克核心配色 */
-            --color-bg-dark: #050b14;      /* 深色背景基底 */
-            --color-bg-gradient-1: #12051c; /* 漸層色 1 (深紫) */
-            --color-bg-gradient-2: #0a1428; /* 漸層色 2 (深藍) */
-            
-            --color-neon-blue: #00f7ff;    /* 霓虹藍 (主色) */
-            --color-neon-pink: #ff00ff;    /* 霓虹粉 (輔助色) */
-            --color-neon-purple: #bc13fe;  /* 霓虹紫 (強調色) */
-            --color-neon-yellow: #faff00;  /* 霓虹黃 (點綴色) */
-
-            --color-text: #e2e8f0;         /* 淺灰藍文字 */
-            --color-text-muted: #94a3b8;   /* 暗淡文字 */
-            
-            --color-surface: rgba(20, 20, 40, 0.7);  /* 半透明區塊背景 */
-            --color-border: rgba(0, 247, 255, 0.3);  /* 霓虹邊框 */
-
+            --color-bg: #0f172a;       /* 深藍色背景 */
+            --color-text: #f1f5f9;     /* 淺灰白色文字 */
+            --color-text-muted: #94a3b8;
+            --color-primary: #38bdf8;  /* 青藍色主色 */
+            --color-primary-hover: #0ea5e9;
+            --color-surface: #1e293b;  /* 區塊背景 */
             --spacing-unit: 1rem;
             --container-width: 1200px;
-            
-            /* 霓虹光暈效果變數 */
-            --shadow-neon-blue: 0 0 10px var(--color-neon-blue), 0 0 20px rgba(0, 247, 255, 0.5);
-            --shadow-neon-pink: 0 0 10px var(--color-neon-pink), 0 0 20px rgba(255, 0, 255, 0.5);
-            --text-shadow-neon: 0 0 5px rgba(0, 247, 255, 0.8), 0 0 10px rgba(0, 247, 255, 0.4);
         }
 
         *, *::before, *::after {
@@ -47,26 +32,10 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Rajdhani', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; /* 建議引入 Google Fonts 的 Rajdhani 字體以增強風格 */
-            background-color: var(--color-bg-dark);
-            /* 賽博龐克漸層背景 + 掃描線紋理疊加 */
-            background-image: 
-                linear-gradient(rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.2) 50%), /* 掃描線效果 */
-                linear-gradient(135deg, var(--color-bg-gradient-1) 0%, var(--color-bg-dark) 50%, var(--color-bg-gradient-2) 100%);
-            background-size: 100% 4px, cover; /* 掃描線間距 */
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--color-bg);
             color: var(--color-text);
             line-height: 1.6;
-            overflow-x: hidden; /* 避免光暈效果產生卷軸 */
-        }
-
-        /* 加入雜訊紋理背景 (可選) */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: -1;
         }
 
         img {
@@ -77,14 +46,12 @@
 
         a {
             text-decoration: none;
-            color: var(--color-neon-blue);
-            transition: all 0.3s ease;
-            text-shadow: 0 0 2px var(--color-neon-blue);
+            color: var(--color-primary);
+            transition: all 0.2s ease;
         }
 
         a:hover {
-            color: var(--color-neon-pink);
-            text-shadow: 0 0 8px var(--color-neon-pink);
+            color: var(--color-primary-hover);
         }
 
         ul {
@@ -102,47 +69,29 @@
             padding-right: 1.5rem;
         }
 
-        /* 共用區塊間距 與 邊框 */
+        /* 共用區塊間距 */
         .section {
-            padding: 5rem 0;
-            border-bottom: 1px solid rgba(0, 247, 255, 0.1);
-            position: relative;
+            padding: 4rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* 區塊標題樣式 (故障藝術風格) */
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #fff;
-            /* 雙重陰影製造故障感 */
-            text-shadow: 
-                2px 2px 0px var(--color-neon-pink),
-                -2px -2px 0px var(--color-neon-blue);
-            position: relative;
-            display: inline-block;
-            letter-spacing: 1px;
-            font-weight: 800;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+            border-left: 4px solid var(--color-primary);
+            padding-left: 1rem;
+            line-height: 1.2;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-neon-blue), var(--color-neon-pink));
-            margin-top: 0.5rem;
-            box-shadow: var(--shadow-neon-blue);
-        }
-
-        /* 導覽列 (玻璃質感 + 霓虹邊框) */
+        /* 導覽列 */
         .site-header {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background-color: rgba(10, 10, 25, 0.8); /* 更深的半透明 */
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--color-border);
-            box-shadow: 0 2px 10px rgba(0, 247, 255, 0.1);
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding: 1rem 0;
         }
 
@@ -154,11 +103,10 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: #fff;
-            letter-spacing: 1px;
-            text-shadow: var(--text-shadow-neon);
+            letter-spacing: 0.5px;
         }
 
         .nav-list {
@@ -170,136 +118,83 @@
         .nav-link {
             color: var(--color-text-muted);
             font-weight: 500;
-            text-shadow: none;
-            position: relative;
         }
 
         .nav-link:hover {
-            color: var(--color-neon-blue);
-            text-shadow: var(--text-shadow-neon);
-        }
-        
-        /* 導覽連結 hover 底線動畫 */
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background-color: var(--color-neon-blue);
-            transition: width 0.3s ease;
-            box-shadow: 0 0 5px var(--color-neon-blue);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
+            color: var(--color-primary);
         }
 
         /* 頁尾 */
         .site-footer {
-            padding: 3rem 0;
+            padding: 2rem 0;
             text-align: center;
             color: var(--color-text-muted);
             font-size: 0.875rem;
-            background-color: rgba(10, 10, 25, 0.95);
-            border-top: 1px solid var(--color-border);
-            box-shadow: 0 -2px 10px rgba(0, 247, 255, 0.05);
+            background-color: var(--color-surface);
         }
         /* CSS:BASE-END */
 
 
         /* CSS:HERO-START */
         .section-hero {
-            padding-top: 8rem;
+            padding-top: 6rem;
             padding-bottom: 6rem;
             text-align: center;
-            /* Hero 區塊專屬背景光暈 */
-            background-image: radial-gradient(circle at center, rgba(0, 247, 255, 0.15) 0%, transparent 70%);
         }
 
         .hero-title {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
             color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            /* 標題霓虹光暈 */
-            text-shadow: 
-                0 0 10px rgba(0, 247, 255, 0.6),
-                0 0 20px rgba(0, 247, 255, 0.3),
-                0 0 40px rgba(0, 247, 255, 0.1);
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--color-text);
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+            font-size: 1.125rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
         }
 
         .hero-image-wrapper {
-            margin-top: 3rem;
-            border-radius: 16px;
+            margin-top: 2rem;
+            border-radius: 12px;
             overflow: hidden;
-            /* 圖片邊框霓虹光暈 */
-            border: 2px solid var(--color-neon-blue);
-            box-shadow: 
-                0 0 20px rgba(0, 247, 255, 0.3),
-                inset 0 0 20px rgba(0, 247, 255, 0.1);
-            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
         }
         
-        /* 圖片覆蓋一層掃描線效果 */
-        .hero-image-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: repeating-linear-gradient(transparent 0px, transparent 2px, rgba(0, 247, 255, 0.05) 3px, rgba(0, 247, 255, 0.05) 4px);
-            pointer-events: none;
-        }
-        
-        /* 按鈕通用樣式 (Cyberpunk) */
+        /* 按鈕通用樣式 */
         .btn {
             display: inline-block;
-            padding: 0.875rem 2rem;
-            border-radius: 4px; /* 方形導角更硬派 */
-            font-weight: 700;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            text-shadow: none;
         }
 
-        /* 主要按鈕 (霓虹漸層 + 發光) */
         .btn-primary {
-            background: linear-gradient(135deg, var(--color-neon-blue), var(--color-neon-purple));
-            color: #050b14;
-            border: none;
-            box-shadow: var(--shadow-neon-blue);
+            background-color: var(--color-primary);
+            color: #0f172a;
+            border: 1px solid var(--color-primary);
         }
         
         .btn-primary:hover {
-            background: linear-gradient(135deg, var(--color-neon-purple), var(--color-neon-pink));
-            box-shadow: var(--shadow-neon-pink);
-            color: #fff;
-            transform: translateY(-2px);
+            background-color: var(--color-primary-hover);
+            border-color: var(--color-primary-hover);
+            transform: translateY(-1px);
         }
         /* CSS:HERO-END */
 
 
         /* CSS:ABOUT-START */
         .section-about {
-            /* 區塊背景使用半透明深色，增加層次 */
-            background-color: rgba(15, 23, 42, 0.5);
-            box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+            background-color: var(--color-bg);
+            /* 讓背景稍微區隔，可選 */
+            background-image: linear-gradient(to bottom, var(--color-bg), var(--color-surface));
         }
 
         .about-content-wrapper {
@@ -310,74 +205,67 @@
 
         /* 文字區域樣式 */
         .about-text-group h3 {
-            font-size: 1.5rem;
-            color: var(--color-neon-yellow); /* 使用黃色點綴 */
-            margin-top: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            color: #fff;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
             font-weight: 700;
-            text-shadow: 0 0 5px rgba(250, 255, 0, 0.6);
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .about-desc {
-            margin-bottom: 1.5rem;
-            color: var(--color-text);
-            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+            color: var(--color-text-muted);
+            font-size: 1.05rem;
             text-align: justify;
-            line-height: 1.8;
         }
 
         /* 列表樣式優化 */
         .about-list {
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .about-list li {
             position: relative;
-            padding-left: 2rem;
-            margin-bottom: 1rem;
-            color: var(--color-text-muted);
+            padding-left: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text);
         }
 
         .about-list li::before {
-            content: "►"; /* 使用箭頭符號 */
+            content: "▹"; /* 或使用其他符號 */
             position: absolute;
             left: 0;
-            top: 0.1rem;
-            color: var(--color-neon-pink);
-            font-size: 1rem;
-            text-shadow: 0 0 5px var(--color-neon-pink);
+            top: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1.5rem;
         }
 
         .about-list li strong {
             color: #fff;
             font-weight: 600;
-            text-shadow: 0 0 2px var(--color-neon-blue);
         }
 
         /* 按鈕群組 */
         .about-actions {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
-            margin-top: 2.5rem;
+            margin-top: 2rem;
         }
 
-        /* 次要按鈕樣式 (霓虹描邊 + 發光) */
         .btn-outline {
             background-color: transparent;
-            color: var(--color-neon-blue);
-            border: 2px solid var(--color-neon-blue);
-            box-shadow: 0 0 10px rgba(0, 247, 255, 0.2);
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
         }
 
         .btn-outline:hover {
-            background: linear-gradient(135deg, rgba(0, 247, 255, 0.2), rgba(188, 19, 254, 0.2));
-            color: #fff;
-            border-color: var(--color-neon-pink);
-            box-shadow: var(--shadow-neon-pink);
-            transform: translateY(-2px);
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--color-primary-hover);
+            border-color: var(--color-primary-hover);
+            transform: translateY(-1px);
         }
 
         /* 圖片區域樣式 */
@@ -389,35 +277,32 @@
         .about-img-container img {
             width: 100%;
             border-radius: 12px;
-            /* 圖片霓虹光暈與濾鏡 */
-            border: 2px solid var(--color-neon-purple);
-            box-shadow: var(--shadow-neon-pink);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             object-fit: cover;
-            max-height: 450px; 
-            filter: contrast(1.2) saturate(1.1) hue-rotate(10deg); /* 增加科幻感濾鏡 */
+            /* 手機版圖片高度限制 */
+            max-height: 400px; 
         }
         /* CSS:ABOUT-END */
 
 
         /* CSS:SKILLS-START */
         .section-skills {
-            background-color: rgba(10, 10, 25, 0.4);
-            border-top: 1px solid rgba(255, 0, 255, 0.1);
+            background-color: var(--color-surface);
         }
         /* CSS:SKILLS-END */
 
 
         /* CSS:PROJECTS-START */
         .section-projects {
-            background-color: rgba(15, 23, 42, 0.6);
+            background-color: var(--color-bg);
         }
         /* CSS:PROJECTS-END */
 
 
         /* CSS:CONTACT-START */
         .section-contact {
-            background-color: rgba(10, 10, 25, 0.4);
-            padding-bottom: 6rem;
+            background-color: var(--color-surface);
         }
         
         .contact-links {
@@ -425,21 +310,6 @@
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
-        }
-        
-        .contact-links a {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            border: 1px solid rgba(0, 247, 255, 0.2);
-            border-radius: 4px;
-            background: rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .contact-links a:hover {
-            border-color: var(--color-neon-blue);
-            box-shadow: var(--shadow-neon-blue);
-            background: rgba(0, 247, 255, 0.1);
         }
         /* CSS:CONTACT-END */
 
@@ -452,25 +322,24 @@
             }
 
             .section-title {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
 
             .hero-title {
-                font-size: 4.5rem; /* 更大的標題 */
+                font-size: 3.5rem;
             }
             
             .contact-links {
                 flex-direction: row;
-                gap: 1.5rem;
-                flex-wrap: wrap;
+                gap: 2rem;
             }
 
-            /* About Section Desktop Layout */
+            /* About Section Desktop Layout (重設計版面) */
             .about-content-wrapper {
                 flex-direction: row;
                 align-items: center; /* 垂直置中 */
                 justify-content: space-between;
-                gap: 5rem; /* 增加間距 */
+                gap: 4rem; /* 增加間距 */
             }
 
             .about-text-group {
@@ -479,7 +348,7 @@
             }
 
             .about-img-container {
-                flex: 0.9;
+                flex: 0.8; /* 圖片稍微窄一點 */
                 order: 2; /* 圖片在右 */
             }
 
@@ -495,17 +364,10 @@
                 padding-left: 2rem;
                 padding-right: 2rem;
             }
-            
-            .hero-title {
-                font-size: 5.5rem;
-            }
         }
         /* CSS:RWD-END */
 
     </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -513,7 +375,7 @@
         <header class="site-header">
             <div class="container">
                 <nav class="nav">
-                    <a href="#hero" class="logo">Dev Name · Cyberpunk Dev</a>
+                    <a href="#hero" class="logo">Dev Name · Frontend Dev</a>
                     <ul class="nav-list">
                         <li><a href="#hero" class="nav-link">首頁</a></li>
                         <li><a href="#about" class="nav-link">關於我</a></li>
@@ -528,12 +390,12 @@
         <main>
             <section id="hero" class="section section-hero" aria-labelledby="hero-title">
                 <div class="container">
-                    <h1 id="hero-title" class="hero-title">Hello, I'm <span style="color:var(--color-neon-blue); text-shadow: var(--text-shadow-neon);">Joash</span></h1>
+                    <h1 id="hero-title" class="hero-title">Hello, I'm <span style="color:var(--color-primary)">Joash</span></h1>
                     <p class="hero-subtitle">
                         這裡目前是 Hero 區的占位內容。這是一個專注於打造極致使用者體驗的前端工程師個人網站。
                         <br>
-                        <span style="display:block; margin-top:1rem; font-size:0.9rem; color:var(--color-neon-pink); text-shadow: 0 0 5px var(--color-neon-pink);">
-                            【提示】目前已套用賽博龐克風格主題與漸層背景。
+                        <span style="display:block; margin-top:1rem; font-size:0.9rem; color:var(--color-primary);">
+                            【給開發者的提示】之後會用 Section SDD 的 Prompt 產生正式文案與版面，請把新的 section 程式碼整段貼回來，完全取代這一區。
                         </span>
                     </p>
                     <a href="#projects" class="btn btn-primary">瀏覽作品集</a>
@@ -542,8 +404,8 @@
                         <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80" 
                              alt="筆電與程式碼開發畫面示意圖" 
                              width="1200" height="600" 
-                             loading="lazy"
-                             style="filter: hue-rotate(15deg) contrast(1.1);"> </div>
+                             loading="lazy">
+                    </div>
                 </div>
             </section>
             <section id="about" class="section section-about" aria-labelledby="about-heading">
@@ -600,10 +462,10 @@
                         <p>預計放入 3-4 個代表性的專案卡片，包含截圖、技術說明與 Demo 連結。</p>
                         <p>請使用 Section SDD 產生正式內容後，將此區塊完全覆蓋。</p>
                     </div>
-                    <div style="margin-top: 2rem; position: relative; border-radius: 8px; overflow: hidden; border: 1px solid var(--color-neon-blue); box-shadow: var(--shadow-neon-blue);">
+                    <div style="margin-top: 2rem;">
                          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" 
                               alt="正在編寫程式碼的電腦螢幕" 
-                              style="opacity: 0.7; filter: hue-rotate(180deg);">
+                              style="border-radius: 8px; opacity: 0.5;">
                     </div>
                 </div>
             </section>
@@ -621,12 +483,12 @@
                     </div>
                 </div>
             </section>
-            </main>
+        </main>
 
         <footer class="site-footer">
             <div class="container">
                 <p>&copy; 2025 Dev Name. All rights reserved.</p>
-                <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.5rem;">Designed & Built with <span style="color:var(--color-neon-pink)">Cyberpunk Style</span></p>
+                <p style="font-size: 0.8rem; opacity: 0.6;">Design & Built with Mobile First Strategy</p>
             </div>
         </footer>
     </div>
