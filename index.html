@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="前端工程師 Joash 的個人網站。展示專業技能、作品集與聯絡方式，專注於現代化網頁開發與使用者體驗設計。">
+    <meta name="description" content="前端工程師的個人網站，展示專業技能、作品集與聯絡方式，專注於現代化網頁開發與使用者體驗設計。">
     <title>Dev Name · Frontend Dev | 個人品牌網站</title>
 
     <style>
@@ -32,7 +32,7 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--color-bg);
             color: var(--color-text);
             line-height: 1.6;
@@ -47,7 +47,7 @@
         a {
             text-decoration: none;
             color: var(--color-primary);
-            transition: color 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         a:hover {
@@ -81,6 +81,7 @@
             color: var(--color-primary);
             border-left: 4px solid var(--color-primary);
             padding-left: 1rem;
+            line-height: 1.2;
         }
 
         /* 導覽列 */
@@ -164,20 +165,27 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
         }
         
+        /* 按鈕通用樣式 */
         .btn {
             display: inline-block;
             padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
             background-color: var(--color-primary);
             color: #0f172a;
-            font-weight: 600;
-            border-radius: 6px;
-            text-align: center;
-            border: 1px solid var(--color-primary); /* 確保高度一致 */
+            border: 1px solid var(--color-primary);
         }
         
-        .btn:hover {
+        .btn-primary:hover {
             background-color: var(--color-primary-hover);
-            color: #0f172a;
+            border-color: var(--color-primary-hover);
+            transform: translateY(-1px);
         }
         /* CSS:HERO-END */
 
@@ -185,47 +193,68 @@
         /* CSS:ABOUT-START */
         .section-about {
             background-color: var(--color-bg);
+            /* 讓背景稍微區隔，可選 */
+            background-image: linear-gradient(to bottom, var(--color-bg), var(--color-surface));
         }
 
-        .about-content {
+        .about-content-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 3rem;
+        }
+
+        /* 文字區域樣式 */
+        .about-text-group h3 {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         .about-desc {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             color: var(--color-text-muted);
             font-size: 1.05rem;
+            text-align: justify;
         }
 
+        /* 列表樣式優化 */
         .about-list {
             margin-bottom: 2rem;
-            padding-left: 0.5rem;
         }
 
         .about-list li {
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 1.75rem;
             margin-bottom: 0.75rem;
             color: var(--color-text);
         }
 
         .about-list li::before {
-            content: "✓";
+            content: "▹"; /* 或使用其他符號 */
             position: absolute;
             left: 0;
+            top: 0;
             color: var(--color-primary);
             font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1.5rem;
         }
 
+        .about-list li strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* 按鈕群組 */
         .about-actions {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            margin-top: 2rem;
         }
 
-        /* 次級按鈕樣式 (Outline) */
         .btn-outline {
             background-color: transparent;
             color: var(--color-primary);
@@ -236,13 +265,23 @@
             background-color: rgba(56, 189, 248, 0.1);
             color: var(--color-primary-hover);
             border-color: var(--color-primary-hover);
+            transform: translateY(-1px);
         }
 
-        .about-img-wrapper {
+        /* 圖片區域樣式 */
+        .about-img-container {
+            width: 100%;
+            position: relative;
+        }
+
+        .about-img-container img {
+            width: 100%;
             border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            object-fit: cover;
+            /* 手機版圖片高度限制 */
+            max-height: 400px; 
         }
         /* CSS:ABOUT-END */
 
@@ -295,27 +334,36 @@
                 gap: 2rem;
             }
 
-            /* About Section Desktop Layout */
-            .about-content {
+            /* About Section Desktop Layout (重設計版面) */
+            .about-content-wrapper {
                 flex-direction: row;
                 align-items: center; /* 垂直置中 */
                 justify-content: space-between;
-                gap: 3rem;
+                gap: 4rem; /* 增加間距 */
             }
 
-            .about-text-wrapper {
+            .about-text-group {
                 flex: 1;
                 order: 1; /* 文字在左 */
             }
 
-            .about-img-wrapper {
-                flex: 1;
+            .about-img-container {
+                flex: 0.8; /* 圖片稍微窄一點 */
                 order: 2; /* 圖片在右 */
+            }
+
+            .about-img-container img {
+                max-height: none; /* 解除高度限制 */
+                aspect-ratio: 3/4; /* 設定直式比例 */
             }
         }
 
         @media (min-width: 1024px) {
-            /* 桌面版佈局調整預留 */
+            /* 桌面版大螢幕優化 */
+            .container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
         }
         /* CSS:RWD-END */
 
@@ -350,7 +398,7 @@
                             【給開發者的提示】之後會用 Section SDD 的 Prompt 產生正式文案與版面，請把新的 section 程式碼整段貼回來，完全取代這一區。
                         </span>
                     </p>
-                    <a href="#projects" class="btn">瀏覽作品集</a>
+                    <a href="#projects" class="btn btn-primary">瀏覽作品集</a>
                     
                     <div class="hero-image-wrapper">
                         <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80" 
@@ -362,33 +410,35 @@
             </section>
             <section id="about" class="section section-about" aria-labelledby="about-heading">
                 <div class="container">
-                    <h2 id="about-heading" class="section-title">關於我</h2>
-                    
-                    <div class="about-content">
-                        <div class="about-text-wrapper">
+                    <div class="about-content-wrapper">
+                        <div class="about-text-group">
+                            <h2 id="about-heading" class="section-title">關於我</h2>
+                            
                             <p class="about-desc">
-                                我現在是一名專注於創造優質體驗的前端工程師，同時也投入程式教學與接案開發。熟悉 HTML, CSS, JavaScript 及現代化前端框架，致力於將視覺設計轉化為流暢的互動網頁。
-                            </p>
-                            <p class="about-desc">
-                                我相信技術的價值在於解決問題。我的工作風格重視溝通與協作，喜歡將複雜的邏輯梳理清楚，並且樂於分享知識，幫助團隊與學生共同成長。
+                                我現在是一名專注於 <strong>Frontend Development</strong> 的前端工程師，同時也熱衷於技術教學與接案開發。我的核心技能專注於 HTML、CSS 與 JavaScript，並致力於透過現代化框架打造流暢的使用者體驗。
                             </p>
                             
+                            <p class="about-desc">
+                                在開發過程中，我非常重視「溝通」與「清晰的邏輯」。我相信好的產品源自於團隊對目標的共同理解。無論是教學還是協作，我都習慣將複雜的概念簡單化，確保每一個細節都能被準確執行。
+                            </p>
+
+                            <h3>核心優勢與價值</h3>
                             <ul class="about-list">
-                                <li>具備 RWD 響應式網頁設計與效能優化能力</li>
-                                <li>擅長與設計師溝通，精準還原 UI/UX 互動細節</li>
-                                <li>擁有教學經驗，能將複雜技術概念清晰傳達</li>
+                                <li><strong>精準還原設計：</strong> 具備 RWD 響應式思維，確保在手機與桌機皆有完美呈現。</li>
+                                <li><strong>重視程式品質：</strong> 撰寫清晰、可維護的程式碼，並注重效能優化。</li>
+                                <li><strong>技術知識分享：</strong> 樂於將技術轉化為教學內容，幫助團隊共同成長。</li>
                             </ul>
 
                             <div class="about-actions">
-                                <a href="#projects" class="btn">查看作品集</a>
+                                <a href="#projects" class="btn btn-primary">查看作品集</a>
                                 <a href="#contact" class="btn btn-outline">聯絡我</a>
                             </div>
                         </div>
 
-                        <div class="about-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?auto=format&fit=crop&w=800&q=80" 
-                                 alt="工程師正在專注撰寫程式碼，螢幕上顯示著開發介面" 
-                                 width="800" height="600" 
+                        <div class="about-img-container">
+                            <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="工程師正在專注撰寫程式碼，背景為深色系 IDE 開發環境" 
+                                 width="800" height="1000" 
                                  loading="lazy">
                         </div>
                     </div>
